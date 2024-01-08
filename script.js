@@ -41,15 +41,37 @@ const butn = document.getElementById("btn");
 
 butn.addEventListener("click",(e)=>{
 
-    const curntdate = new Date(input.value) 
+    
 
-    const bdydate = new Date()
-    let diff = bdydate.getTime()- curntdate.getTime();
+    const curntdate = new Date() 
+    console.log(curntdate);
+
+    const bdydate = new Date(input.value)
+    console.log(bdydate);
+    let diff =  curntdate.getTime() - bdydate.getTime();
+
+    if(bdydate=="Invalid Date"){
+        pp.innerText= "Enter valid DOB :(";
+        return;
+        }
 
     let year = diff/(1000*60*60*24*365);
     console.log(Math.floor(year));
 
-    if(bdydate>curntdate){
+
+
+    // month------
+
+    const curntmnth = curntdate.getMonth()+1;
+    console.log(curntmnth);
+
+    const bdymnth = bdydate.getMonth() +1;
+    console.log(bdymnth);
+
+    let newmnth = curntmnth - bdymnth;
+    console.log(newmnth);
+
+    if(bdydate<curntdate){
         pp.innerText=`your age is ${Math.floor(year)} Years old`
     }
     else pp.innerText=`your age is -1 Years old`
