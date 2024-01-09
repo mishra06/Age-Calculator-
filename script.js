@@ -44,10 +44,10 @@ butn.addEventListener("click",(e)=>{
     
 
     const curntdate = new Date() 
-    console.log(curntdate);
+    // console.log(curntdate);
 
     const bdydate = new Date(input.value)
-    console.log(bdydate);
+    // console.log(bdydate);
     let diff =  curntdate.getTime() - bdydate.getTime();
 
     if(bdydate=="Invalid Date"){
@@ -56,23 +56,41 @@ butn.addEventListener("click",(e)=>{
         }
 
     let year = diff/(1000*60*60*24*365);
-    console.log(Math.floor(year));
+    // console.log(Math.floor(year));
 
 
 
     // month------
 
     const curntmnth = curntdate.getMonth()+1;
-    console.log(curntmnth);
-
     const bdymnth = bdydate.getMonth() +1;
-    console.log(bdymnth);
-
     let newmnth = curntmnth - bdymnth;
-    console.log(newmnth);
+ 
+    let agemnth = ((bdymnth-curntmnth+12)%12);  //mnth calculate frmula
+     if(agemnth !=0)  agemnth = 12-agemnth;
+    // console.log(agemnth);
+
+
+    // Day----
+    // const oneDay = 24 * 60 * 60 * 1000; 
+    const curntday  = curntdate.getDate();
+    console.log(curntday);
+    const bdyday =  bdydate.getDate();
+    console.log(bdyday);
+     let day = (curntday - bdyday);
+    //   console.log(day);
+
+    if(curntday < bdyday){
+        day = 30+day;
+        console.log(day);
+    }
+    //  else day;
+    // console.log(day);
+
+
 
     if(bdydate<curntdate){
-        pp.innerText=`your age is ${Math.floor(year)} Years old`
+        pp.innerText=`your age is ${Math.floor(year)} year ${agemnth} month  and ${day} days old`
     }
     else pp.innerText=`your age is -1 Years old`
 
